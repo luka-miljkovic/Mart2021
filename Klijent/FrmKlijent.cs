@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domen;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace Klijent
 {
     public partial class FrmKlijent : Form
     {
-        Komunikacija k;
+        
         public FrmKlijent()
         {
             InitializeComponent();
@@ -20,15 +21,24 @@ namespace Klijent
 
         private void FrmKlijent_Load(object sender, EventArgs e)
         {
-            k = new Komunikacija();
 
-            if (k.PoveziSeNaServer())
+            if (Komunikacija.GetInstance().PoveziSeNaServer())
             {
             }
             else
             {
                 this.Text = "Neuspesno povezivanje sa serverom";
             }
+
+            dgvUtakmice.DataSource = new BindingList<Utakmica>(Komunikacija.GetInstance().VratiSveUtakmice());
+        }
+
+        private void dtnIzmeniUtakmicu_Click(object sender, EventArgs e)
+        {
+            Utakmica u = (Utakmica)dgvUtakmice.CurrentRow.DataBoundItem;
+
+            new FrmIzmena(u).ShowDialog();
+
         }
     }
 }

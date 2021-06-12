@@ -8,6 +8,8 @@ namespace Domen
 {
     public enum Operacije
     {
-        Kraj = 1
+        Kraj = 1,
+        VratiRepke = 2,
+        VratiUtakmice = 3
     }
 }

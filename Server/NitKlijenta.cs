@@ -41,6 +41,16 @@ namespace Server
                         case Operacije.Kraj:
                             operacija = 1;
                             break;
+                        case Operacije.VratiUtakmice:
+                            transfer.Rezultat = Broker.GetInstance().VratiSveUtakmice();
+                            formater.Serialize(tok, transfer);
+                            break;
+
+                        case Operacije.VratiRepke:
+
+                            transfer.Rezultat = Broker.GetInstance().VratiSveRepke();
+                            formater.Serialize(tok, transfer);
+                            break;
                         default:
                             break;
                     }

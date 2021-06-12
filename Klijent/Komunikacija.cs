@@ -15,6 +15,25 @@ namespace Klijent
         BinaryFormatter formater;
         NetworkStream tok;
 
+        private static Komunikacija Instance;
+
+        public static Komunikacija GetInstance()
+        {
+            if (Instance == null)
+                Instance = new Komunikacija();
+            return Instance;
+        }
+
+        internal List<Reprezentacija> VratiSveRepke()
+        {
+            TransferKlasa transfer = new TransferKlasa();
+            transfer.Operacija = Operacije.VratiRepke;
+            formater.Serialize(tok, transfer);
+
+            transfer = (TransferKlasa)formater.Deserialize(tok);
+            return (List<Reprezentacija>)transfer.Rezultat;
+        }
+
         public bool PoveziSeNaServer()
         {
             try
@@ -31,10 +50,21 @@ namespace Klijent
             }
         }
 
+        internal List<Utakmica> VratiSveUtakmice()
+        {
+            TransferKlasa transfer = new TransferKlasa();
+            transfer.Operacija = Operacije.VratiUtakmice;
+            formater.Serialize(tok, transfer);
+
+            transfer = (TransferKlasa)formater.Deserialize(tok);
+            return (List<Utakmica>)transfer.Rezultat;
+
+        }
+
         public void Kraj()
         {
             TransferKlasa transfer = new TransferKlasa();
-            transfer.Operacija = Operacije.Kraj;
+            transfer.Operacija = Operacije.VratiRepke;
             formater.Serialize(tok, transfer);
         }
     }

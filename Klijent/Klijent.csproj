@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmIzmena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIzmena.Designer.cs">
+      <DependentUpon>FrmIzmena.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmKlijent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +61,9 @@
     <Compile Include="Komunikacija.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmIzmena.resx">
+      <DependentUpon>FrmIzmena.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmKlijent.resx">
       <DependentUpon>FrmKlijent.cs</DependentUpon>
     </EmbeddedResource>
