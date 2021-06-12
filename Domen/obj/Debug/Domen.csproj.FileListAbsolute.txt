@@ -1,0 +1,6 @@
+C:\Users\Luka\Documents\Пројектовање софтвера\Вежбање ЈУН 2021\TemplateProba\Domen\bin\Debug\Domen.dll
+C:\Users\Luka\Documents\Пројектовање софтвера\Вежбање ЈУН 2021\TemplateProba\Domen\bin\Debug\Domen.pdb
+C:\Users\Luka\Documents\Пројектовање софтвера\Вежбање ЈУН 2021\TemplateProba\Domen\obj\Debug\Domen.csprojAssemblyReference.cache
+C:\Users\Luka\Documents\Пројектовање софтвера\Вежбање ЈУН 2021\TemplateProba\Domen\obj\Debug\Domen.csproj.CoreCompileInputs.cache
+C:\Users\Luka\Documents\Пројектовање софтвера\Вежбање ЈУН 2021\TemplateProba\Domen\obj\Debug\Domen.dll
+C:\Users\Luka\Documents\Пројектовање софтвера\Вежбање ЈУН 2021\TemplateProba\Domen\obj\Debug\Domen.pdb
