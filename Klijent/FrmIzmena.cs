@@ -14,10 +14,12 @@ namespace Klijent
 {
     public partial class FrmIzmena : Form
     {
-        public static Utakmica utakmica = new Utakmica();
+        public Utakmica utakmica = new Utakmica();
         public FrmIzmena(Utakmica u)
         {
             InitializeComponent();
+
+            this.utakmica = u;
 
             txtGrupa.Text = u.Grupa;
             txtDomacin.Text = u.Domacin.Naziv;
@@ -25,12 +27,12 @@ namespace Klijent
             txtGost.Text = u.Gost.Naziv;
             txtGolovaGost.Text = Convert.ToString(u.GolovaGost);
 
-            utakmica.UtakmicaId = u.UtakmicaId;
-            utakmica.Grupa = u.Grupa;
-            utakmica.Domacin = u.Domacin;
-            utakmica.Gost = u.Gost;
-            utakmica.GolovaDomacin = u.GolovaDomacin;
-            utakmica.GolovaGost = u.GolovaGost;
+            //utakmica.UtakmicaId = u.UtakmicaId;
+            //utakmica.Grupa = u.Grupa;
+            //utakmica.Domacin = u.Domacin;
+            //utakmica.Gost = u.Gost;
+            //utakmica.GolovaDomacin = u.GolovaDomacin;
+            //utakmica.GolovaGost = u.GolovaGost;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,6 +43,11 @@ namespace Klijent
                 cmbGost.Items.Add(r);
             }
         }
+
+        //internal Utakmica VratiTekmu(Utakmica u)
+        //{
+            
+        //}
 
         private void label6_Click(object sender, EventArgs e)
         {

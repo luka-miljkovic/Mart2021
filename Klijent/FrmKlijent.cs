@@ -39,11 +39,16 @@ namespace Klijent
         private void dtnIzmeniUtakmicu_Click(object sender, EventArgs e)
         {
             Utakmica u = (Utakmica)dgvUtakmice.CurrentRow.DataBoundItem;
-            //.Show($"{utakmice[0].UtakmicaId}");
-            new FrmIzmena(u).ShowDialog();
-            int index = u.UtakmicaId - 1;
+
+
+            FrmIzmena fi = new FrmIzmena(u);
+            fi.ShowDialog();
+
+            
+
+            int index = dgvUtakmice.CurrentRow.Index;
             utakmice.Remove(u);
-            utakmice.Insert(index, FrmIzmena.utakmica);
+            utakmice.Insert(index, fi.utakmica);
             
 
         }
@@ -51,7 +56,7 @@ namespace Klijent
         private void btnObrisiUtakmicu_Click(object sender, EventArgs e)
         {
             Utakmica u = (Utakmica)dgvUtakmice.CurrentRow.DataBoundItem;
-            int index = u.UtakmicaId - 1;
+            int index = dgvUtakmice.CurrentRow.Index;
             utakmice.Remove(u);
             u.Status = Status.Obrisi;
             utakmice.Insert(index, u);
