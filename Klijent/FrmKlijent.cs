@@ -56,5 +56,19 @@ namespace Klijent
             u.Status = Status.Obrisi;
             utakmice.Insert(index, u);
         }
+
+        private void btnSacuvaj_Click(object sender, EventArgs e)
+        {
+            int rez = Komunikacija.GetInstance().SacuvajIzmene(new List<Utakmica>(utakmice));
+
+            if(rez == 1)
+            {
+                MessageBox.Show("Izmene su uspesno sacuvane");
+            }
+            if(rez == 0)
+            {
+                MessageBox.Show("Greska prilikom cuvanja izmena");
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace Domen
     {
         Kraj = 1,
         VratiRepke = 2,
-        VratiUtakmice = 3
+        VratiUtakmice = 3,
+        SacuvajIzmene = 4
     }
 }

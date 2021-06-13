@@ -59,6 +59,7 @@
             this.btnSacuvaj.TabIndex = 3;
             this.btnSacuvaj.Text = "Sacuvaj izmene";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
+            this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
             // 
             // btnObrisiUtakmicu
             // 

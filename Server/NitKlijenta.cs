@@ -45,10 +45,12 @@ namespace Server
                             transfer.Rezultat = Broker.GetInstance().VratiSveUtakmice();
                             formater.Serialize(tok, transfer);
                             break;
-
                         case Operacije.VratiRepke:
-
                             transfer.Rezultat = Broker.GetInstance().VratiSveRepke();
+                            formater.Serialize(tok, transfer);
+                            break;
+                        case Operacije.SacuvajIzmene:
+                            transfer.Rezultat = Broker.GetInstance().SacuvajIzmene((List<Utakmica>)transfer.TransferObjekat);
                             formater.Serialize(tok, transfer);
                             break;
                         default:

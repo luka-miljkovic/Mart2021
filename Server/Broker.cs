@@ -91,6 +91,49 @@ namespace Server
             }
         }
 
+        internal int SacuvajIzmene(List<Utakmica> utakmice)
+        {
+            try
+            {
+                connection.Open();
+                transaction = connection.BeginTransaction();
+                command = new SqlCommand("", connection, transaction);
+                foreach(Utakmica u in utakmice)
+                {
+                    if(u.Status == Status.Izmeni)
+                    {
+                        command.CommandText = $"update Utakmica " +
+                            $"set Grupa = '{u.Grupa}', DomacinID = {u.Domacin.ReprezentacijaId}, " +
+                            $"GostID = {u.Gost.ReprezentacijaId}, GolovaDomacin = {u.GolovaDomacin}, " +
+                            $"GolovaGost = {u.GolovaGost} " +
+                            $"where UtakmicaID = {u.UtakmicaId}";
+                        command.ExecuteNonQuery();
+                    }
+                    if(u.Status == Status.Obrisi)
+                    {
+                        command.CommandText = $"delete from Utakmica where UtakmicaID = {u.UtakmicaId}";
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                transaction.Commit();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                transaction.Rollback();
+                return 0;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         internal List<Utakmica> VratiSveUtakmice()
         {
             List<Utakmica> utakmice = new List<Utakmica>();

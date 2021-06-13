@@ -1,6 +1,7 @@
 ﻿using Domen;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -59,6 +60,17 @@ namespace Klijent
             transfer = (TransferKlasa)formater.Deserialize(tok);
             return (List<Utakmica>)transfer.Rezultat;
 
+        }
+
+        internal int SacuvajIzmene(List<Utakmica> utakmice)
+        {
+            TransferKlasa transfer = new TransferKlasa();
+            transfer.Operacija = Operacije.SacuvajIzmene;
+            transfer.TransferObjekat = utakmice;
+            formater.Serialize(tok, transfer);
+
+            transfer = (TransferKlasa)formater.Deserialize(tok);
+            return (int)transfer.Rezultat;
         }
 
         public void Kraj()
