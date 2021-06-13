@@ -8,6 +8,13 @@ using System.Threading.Tasks;
 
 namespace Domen
 {
+    public enum Status
+    {
+        Nepromenjena,
+        Izmeni,
+        Obrisi
+
+    }
     [Serializable]
     public class Utakmica
     {
@@ -18,5 +25,6 @@ namespace Domen
         public Reprezentacija Gost { get; set; }
         public int GolovaDomacin { get; set; }
         public int GolovaGost { get; set; }
+        public Status Status { get; set; }
     }
 }

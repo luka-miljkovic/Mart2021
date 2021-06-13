@@ -46,7 +46,7 @@
             this.Utakmice.Controls.Add(this.dgvUtakmice);
             this.Utakmice.Location = new System.Drawing.Point(12, 12);
             this.Utakmice.Name = "Utakmice";
-            this.Utakmice.Size = new System.Drawing.Size(835, 421);
+            this.Utakmice.Size = new System.Drawing.Size(882, 421);
             this.Utakmice.TabIndex = 0;
             this.Utakmice.TabStop = false;
             this.Utakmice.Text = "utakmice";
@@ -68,6 +68,7 @@
             this.btnObrisiUtakmicu.TabIndex = 2;
             this.btnObrisiUtakmicu.Text = "Obrisi utakmicu";
             this.btnObrisiUtakmicu.UseVisualStyleBackColor = true;
+            this.btnObrisiUtakmicu.Click += new System.EventHandler(this.btnObrisiUtakmicu_Click);
             // 
             // dtnIzmeniUtakmicu
             // 
@@ -86,14 +87,14 @@
             this.dgvUtakmice.Name = "dgvUtakmice";
             this.dgvUtakmice.RowHeadersWidth = 51;
             this.dgvUtakmice.RowTemplate.Height = 24;
-            this.dgvUtakmice.Size = new System.Drawing.Size(823, 329);
+            this.dgvUtakmice.Size = new System.Drawing.Size(870, 329);
             this.dgvUtakmice.TabIndex = 0;
             // 
             // FrmKlijent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 445);
+            this.ClientSize = new System.Drawing.Size(906, 445);
             this.Controls.Add(this.Utakmice);
             this.Name = "FrmKlijent";
             this.Text = " [FON] Fudbal - klijenski program";

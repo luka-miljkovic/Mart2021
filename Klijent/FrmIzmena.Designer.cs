@@ -136,6 +136,7 @@
             this.btnSacuvajIzmene.Text = "Sacuvaj izmene";
             this.btnSacuvajIzmene.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnSacuvajIzmene.UseVisualStyleBackColor = true;
+            this.btnSacuvajIzmene.Click += new System.EventHandler(this.btnSacuvajIzmene_Click);
             // 
             // label6
             // 

@@ -13,6 +13,7 @@ namespace Klijent
 {
     public partial class FrmKlijent : Form
     {
+        BindingList<Utakmica> utakmice;
         
         public FrmKlijent()
         {
@@ -30,15 +31,30 @@ namespace Klijent
                 this.Text = "Neuspesno povezivanje sa serverom";
             }
 
-            dgvUtakmice.DataSource = new BindingList<Utakmica>(Komunikacija.GetInstance().VratiSveUtakmice());
+            utakmice = new BindingList<Utakmica>(Komunikacija.GetInstance().VratiSveUtakmice());
+
+            dgvUtakmice.DataSource = utakmice;
         }
 
         private void dtnIzmeniUtakmicu_Click(object sender, EventArgs e)
         {
             Utakmica u = (Utakmica)dgvUtakmice.CurrentRow.DataBoundItem;
-
+            //.Show($"{utakmice[0].UtakmicaId}");
             new FrmIzmena(u).ShowDialog();
+            int index = u.UtakmicaId - 1;
+            utakmice.Remove(u);
+            utakmice.Insert(index, FrmIzmena.utakmica);
+            
 
+        }
+
+        private void btnObrisiUtakmicu_Click(object sender, EventArgs e)
+        {
+            Utakmica u = (Utakmica)dgvUtakmice.CurrentRow.DataBoundItem;
+            int index = u.UtakmicaId - 1;
+            utakmice.Remove(u);
+            u.Status = Status.Obrisi;
+            utakmice.Insert(index, u);
         }
     }
 }
