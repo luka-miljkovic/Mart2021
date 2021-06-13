@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,148 @@ namespace Server
                 Instance = new Broker();
             }
             return Instance;
+        }
+
+        internal int BrojPrimljenihGolova(int reprezentacijaId)
+        {
+            int golovi = 0;
+            try
+            {
+                connection.Open();
+                command.CommandText = $"select * from Utakmica where DomacinID = {reprezentacijaId} or GostID = {reprezentacijaId}";
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if ((int)reader[2] == reprezentacijaId)
+                    {
+                        golovi += (int)reader[5];
+                    }
+                    if ((int)reader[3] == reprezentacijaId)
+                    {
+                        golovi += (int)reader[4];
+                    }
+                }
+                reader.Close();
+                return golovi;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        internal List<Tabela> VratiTabelu(string grupa)
+        {
+            List<Tabela> tabela = new List<Tabela>();
+            try
+            {
+                connection.Open();
+                command.CommandText = $"select * from Utakmica u join Reprezentacija d " +
+                    $"on(u.DomacinID = d.ReprezentacijaID) " +
+                    $"join Reprezentacija g on(u.GostID = g.ReprezentacijaID) " +
+                    $"where u.Grupa = '{grupa}'";
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    //Reprezentacija r1 = VratiRepku((int)reader[2]);
+                    //Reprezentacija r2 = VratiRepku((int)reader[3]);
+                    Tabela t1 = new Tabela
+                    {
+                        RepkaID = (int)reader[6],
+                        NazivRepke = (string)reader[7]
+                        
+                    };
+
+                    Tabela t2 = new Tabela
+                    {
+                        RepkaID = (int)reader[8],
+                        NazivRepke = (string)reader[9]
+                        
+                    };
+                    bool postojiT1 = false;
+                    bool postojiT2 = false;
+                    foreach(Tabela t in tabela)
+                    {
+                        if (t.NazivRepke == t1.NazivRepke)
+                            postojiT1 = true;
+                        if (t.NazivRepke == t2.NazivRepke)
+                            postojiT2 = false;
+                    }
+                    if (!postojiT1)
+                        tabela.Add(t1);
+                    if (!postojiT2)
+                    {
+                        tabela.Add(t2);
+                    }
+                }
+                reader.Close();
+                connection.Close();
+                foreach(Tabela t in tabela)
+                {
+                    t.GolovaDala = BrojDatihGolova(t.RepkaID);
+                    t.GolovaPrimila = BrojPrimljenihGolova(t.RepkaID);
+                    t.GolRazlika = t.GolovaDala - t.GolovaPrimila;
+                }
+
+
+                return tabela;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                throw;
+            }
+            //finally
+            //{
+            //    if (connection != null)
+            //    {
+            //        connection.Close();
+            //    }
+            //}
+        }
+
+        internal int BrojDatihGolova(int reprezentacijaId)
+        {
+            int golovi = 0;
+            try
+            {
+                connection.Open();
+                command.CommandText = $"select * from Utakmica where DomacinID = {reprezentacijaId} or GostID = {reprezentacijaId}";
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if((int)reader[2] == reprezentacijaId)
+                    {
+                        golovi += (int)reader[4];
+                    }
+                    if((int)reader[3] == reprezentacijaId)
+                    {
+                        golovi += (int)reader[5];
+                    }
+                }
+                reader.Close();
+                return golovi;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
         }
 
         void Template()

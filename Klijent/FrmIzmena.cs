@@ -27,12 +27,7 @@ namespace Klijent
             txtGost.Text = u.Gost.Naziv;
             txtGolovaGost.Text = Convert.ToString(u.GolovaGost);
 
-            //utakmica.UtakmicaId = u.UtakmicaId;
-            //utakmica.Grupa = u.Grupa;
-            //utakmica.Domacin = u.Domacin;
-            //utakmica.Gost = u.Gost;
-            //utakmica.GolovaDomacin = u.GolovaDomacin;
-            //utakmica.GolovaGost = u.GolovaGost;
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -44,10 +39,7 @@ namespace Klijent
             }
         }
 
-        //internal Utakmica VratiTekmu(Utakmica u)
-        //{
-            
-        //}
+        
 
         private void label6_Click(object sender, EventArgs e)
         {
@@ -64,11 +56,6 @@ namespace Klijent
                 return;
             }
 
-            //if(cmbDomacin.SelectedItem == cmbGost.SelectedItem)
-            //{
-            //    MessageBox.Show("Domacin i gost moraju biti razliciti!!!");
-            //    return;
-            //}
 
             if(txtGrupa.Text != "A" &&
                 txtGrupa.Text != "B" &&
@@ -104,7 +91,6 @@ namespace Klijent
                     return;
                 }
             }
-            //MessageBox.Show($"par {utakmica.Domacin.Naziv} - {utakmica.Gost.Naziv}");
 
 
 

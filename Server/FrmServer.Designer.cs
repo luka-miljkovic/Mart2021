@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtGrupa = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -44,12 +44,12 @@
             this.label1.Text = "Grupa:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // txtGrupa
             // 
-            this.textBox1.Location = new System.Drawing.Point(70, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(338, 22);
-            this.textBox1.TabIndex = 1;
+            this.txtGrupa.Location = new System.Drawing.Point(70, 19);
+            this.txtGrupa.Name = "txtGrupa";
+            this.txtGrupa.Size = new System.Drawing.Size(338, 22);
+            this.txtGrupa.TabIndex = 1;
             // 
             // dataGridView1
             // 
@@ -58,16 +58,16 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(393, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(695, 255);
             this.dataGridView1.TabIndex = 2;
             // 
             // FrmServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 226);
+            this.ClientSize = new System.Drawing.Size(722, 324);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtGrupa);
             this.Controls.Add(this.label1);
             this.Name = "FrmServer";
             this.Text = "[FON] Fudbal - serverski program";
@@ -81,7 +81,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtGrupa;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
